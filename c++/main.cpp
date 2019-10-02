@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 Richard B Tilley <brad@w8rbt.org>
+ * Copyright (c) 2016 Richard B Tilley <btilley@gatech.edu>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
