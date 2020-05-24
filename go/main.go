@@ -6,8 +6,8 @@ import (
 	"golang.org/x/crypto/pbkdf2"
 )
 
+// Get a big password
 func get_big(que []byte) string {
-	// Get a big password
 	result := ""
 
 	for i := 0; i < 21; i++ {
@@ -22,8 +22,8 @@ func get_big(que []byte) string {
 	return result
 }
 
+// Get a small password
 func get_small(que []byte) string {
-	// Get a small password
 	result := ""
 
 	for i := 0; i < 9; i++ {
@@ -38,8 +38,8 @@ func get_small(que []byte) string {
 	return result
 }
 
+// Get a 7 word passphrase
 func get_passphrase(que []byte) string {
-	// Get a 7 word passphrase
 	result := ""
 
 	for i := 0; i < 7; i++ {
@@ -54,6 +54,23 @@ func get_passphrase(que []byte) string {
 	return result
 }
 
+// make the passwords easier to read
+func readable(password string) string {
+	human := ""
+	for i := 0; i < len(password); i++ {
+		if i > 0 {
+			if i%3 == 0 {
+				human += " " + string(password[i])
+			} else {
+				human += string(password[i])
+			}
+		} else {
+			human += string(password[i])
+		}
+	}
+	return human
+}
+
 func main() {
 	dk := pbkdf2.Key([]byte("The sentence."), []byte("word"), 32768, 64, sha512.New)
 	fmt.Printf("%v \n", dk)
@@ -63,7 +80,7 @@ func main() {
 	small := get_small(dk)
 	phrase := get_passphrase(dk)
 
-	fmt.Printf("%v \n", big)
-	fmt.Printf("%v \n", small)
-	fmt.Printf("%v \n", phrase)
+	fmt.Printf("%v %v\n", big, readable(big))
+	fmt.Printf("%v %v\n", small, readable(small))
+	fmt.Printf("%v %v\n", phrase, readable(phrase))
 }
