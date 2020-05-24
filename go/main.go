@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/sha512"
+	"flag"
 	"fmt"
 	"golang.org/x/crypto/pbkdf2"
 )
@@ -72,7 +73,16 @@ func readable(password string) string {
 }
 
 func main() {
-	dk := pbkdf2.Key([]byte("The sentence."), []byte("word"), 32768, 64, sha512.New)
+	var word = flag.String("w", "word", "The word to use as input to dpg.")
+	var help = flag.Bool("help", false, "Show help.")
+
+	flag.Parse()
+	if *help {
+		flag.PrintDefaults()
+		return
+	}
+
+	dk := pbkdf2.Key([]byte("The sentence."), []byte(*word), 32768, 64, sha512.New)
 
 	// Uncomment if needed to debug
 	//fmt.Printf("%v \n", dk)
