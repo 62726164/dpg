@@ -73,14 +73,24 @@ func readable(password string) string {
 
 func main() {
 	dk := pbkdf2.Key([]byte("The sentence."), []byte("word"), 32768, 64, sha512.New)
-	fmt.Printf("%v \n", dk)
-	fmt.Printf("%x \n", dk)
+
+	// Uncomment if needed to debug
+	//fmt.Printf("%v \n", dk)
+	//fmt.Printf("%x \n", dk)
 
 	big := get_big(dk)
 	small := get_small(dk)
 	phrase := get_passphrase(dk)
 
-	fmt.Printf("%v %v\n", big, readable(big))
-	fmt.Printf("%v %v\n", small, readable(small))
-	fmt.Printf("%v %v\n", phrase, readable(phrase))
+	fmt.Printf("\n%s\n", "-----BEGIN DPG MESSAGE-----")
+	fmt.Printf("%s\n", big)
+	fmt.Printf("%s\n", small)
+	fmt.Printf("%s\n", phrase)
+	fmt.Printf("%s\n", "---------------------------")
+	fmt.Printf("%s\n", "---- Human Readable -------")
+	fmt.Printf("%s\n", "---------------------------")
+	fmt.Printf("%s\n", readable(big))
+	fmt.Printf("%s\n", readable(small))
+	fmt.Printf("%s\n", readable(phrase))
+	fmt.Printf("%s\n\n", "------END DPG MESSAGE------")
 }
