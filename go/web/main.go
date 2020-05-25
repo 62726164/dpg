@@ -1,20 +1,55 @@
 package main
 
 import (
+	"crypto/sha512"
+	"golang.org/x/crypto/pbkdf2"
 	"html/template"
 	"net/http"
 )
 
-func getBig(s, w string) string {
-	return "big"
+func getBig(que []byte) string {
+	result := ""
+
+	for i := 0; i < 21; i++ {
+		result += lower()[int(que[i])]
+	}
+
+	//Add special, upper and number
+	result += special()[int(que[21])]
+	result += upper()[int(que[22])]
+	result += numbers()[int(que[23])]
+
+	return result
 }
 
-func getSmall(s, w string) string {
-	return "small"
+func getSmall(que []byte) string {
+	result := ""
+
+	for i := 0; i < 9; i++ {
+		result += lower()[int(que[i])]
+	}
+
+	//Add special, upper and number
+	result += special()[int(que[9])]
+	result += upper()[int(que[10])]
+	result += numbers()[int(que[11])]
+
+	return result
 }
 
-func getPhrase(s, w string) string {
-	return "phrase"
+func getPhrase(que []byte) string {
+	result := ""
+
+	for i := 0; i < 7; i++ {
+		result += words()[int(que[i])]
+	}
+
+	//Add special, upper and number
+	result += special()[int(que[7])]
+	result += upper()[int(que[8])]
+	result += numbers()[int(que[9])]
+
+	return result
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
@@ -28,9 +63,11 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	theSentence := r.PostFormValue("sentence")
 	theWord := r.PostFormValue("word")
 
-	big := getBig(theSentence, theWord)
-	small := getSmall(theSentence, theWord)
-	phrase := getPhrase(theSentence, theWord)
+	dk := pbkdf2.Key([]byte(theSentence), []byte(theWord), 32768, 64, sha512.New)
+
+	big := getBig(dk)
+	small := getSmall(dk)
+	phrase := getPhrase(dk)
 
 	data := struct {
 		S      string

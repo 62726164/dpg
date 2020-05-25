@@ -7,9 +7,9 @@
 {{if and .S .W}}
 	<h2>DPG Results</h2>
 	<hr>
-	<pre>{{ .Big}}</pre>
-	<pre>{{ .Small}}</pre>
-	<pre>{{ .Phrase}}</pre>
+	<pre>Big: {{ .Big}}</pre>
+	<pre>Small: {{ .Small}}</pre>
+	<pre>Phrase: {{ .Phrase}}</pre>
 	<hr>
 	<p><a href=".">Get Another</a></p>
 {{else}}
@@ -17,9 +17,9 @@
 	<hr>
 	<form method="post">
 	<label>Sentence</label>
-	<input type="text" name="sentence" required="" title="Enter a sentence"><br>
+	<input type="password" name="sentence" required="" title="Enter a sentence"><br>
 	<label>Word</label>
-	<input type="text" name="word" required="" title="Enter a word"><br>
+	<input type="password" name="word" required="" title="Enter a word"><br>
 	<input type="submit" value= "Submit">
 	<input type="reset"></form>
 	<hr>
