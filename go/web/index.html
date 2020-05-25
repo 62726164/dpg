@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DPG - Go Web Form</title>
+</head>
+<body>
+{{if and .S .W}}
+	<h2>DPG Results</h2>
+	<hr>
+	<pre>{{ .Big}}</pre>
+	<pre>{{ .Small}}</pre>
+	<pre>{{ .Phrase}}</pre>
+	<hr>
+	<p><a href=".">Get Another</a></p>
+{{else}}
+	<h2>DPG</h2>
+	<hr>
+	<form method="post">
+	<label>Sentence</label>
+	<input type="text" name="sentence" required="" title="Enter a sentence"><br>
+	<label>Word</label>
+	<input type="text" name="word" required="" title="Enter a word"><br>
+	<input type="submit" value= "Submit">
+	<input type="reset"></form>
+	<hr>
+{{end}}
+</body>
+</html>
