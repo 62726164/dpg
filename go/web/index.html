@@ -3,14 +3,27 @@
 <head>
 <title>dpg</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+function copyBig() {
+	navigator.clipboard.writeText({{ .Big}})
+}
+
+function copySmall() {
+	navigator.clipboard.writeText({{ .Small}})
+}
+
+function copyPhrase() {
+	navigator.clipboard.writeText({{ .Phrase}})
+}
+</script>
 </head>
 <body>
 {{if and .S .W}}
 	<h2>DPG</h2>
 	<hr>
-	<input type="button" onclick="alert({{ .Big}})" value="Big"> 
-	<input type="button" onclick="alert({{ .Small}})" value="Small"> 
-	<input type="button" onclick="alert({{ .Phrase}})" value="Phrase"> 
+	<input type="button" onclick="copyBig()" value="Big"> 
+	<input type="button" onclick="copySmall()" value="Small"> 
+	<input type="button" onclick="copyPhrase()" value="Phrase"> 
 	<hr>
 	<form action="dpg">
 	    <input type="submit" value="Start Again" />
@@ -20,9 +33,9 @@
 	<hr>
 	<form method="post">
 	<label>Sentence</label>
-	<input type="password" name="sentence" required="" title="Enter a sentence"><br>
+	<input type="password" size="12" name="sentence" required="" title="Enter a sentence"><br>
 	<label>Word</label>
-	<input type="text" name="word" required="" title="Enter a word"><br>
+	<input type="text" size="12" name="word" required="" title="Enter a word"><br>
 	<hr>
 	<input type="submit" value= "Submit">
 	<input type="reset"></form>
