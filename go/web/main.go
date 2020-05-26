@@ -69,13 +69,20 @@ func handle(w http.ResponseWriter, r *http.Request) {
 	small := getSmall(dk)
 	phrase := getPhrase(dk)
 
+	bigPeek := big[0:4]
+	smallPeek := small[0:4]
+	phrasePeek := phrase[0:4]
+
 	data := struct {
-		S      string
-		W      string
-		Big    string
-		Small  string
-		Phrase string
-	}{S: theSentence, W: theWord, Big: big, Small: small, Phrase: phrase}
+		S          string
+		W          string
+		Big        string
+		Small      string
+		Phrase     string
+		BigPeek    string
+		SmallPeek  string
+		PhrasePeek string
+	}{S: theSentence, W: theWord, Big: big, Small: small, Phrase: phrase, BigPeek: bigPeek, SmallPeek: smallPeek, PhrasePeek: phrasePeek}
 
 	tmpl.Execute(w, data)
 }

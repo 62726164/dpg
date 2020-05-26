@@ -6,14 +6,17 @@
 <script>
 function copyBig() {
 	navigator.clipboard.writeText({{ .Big}})
+	document.getElementById("peek").value = {{ .BigPeek}};
 }
 
 function copySmall() {
 	navigator.clipboard.writeText({{ .Small}})
+	document.getElementById("peek").value = {{ .SmallPeek}};
 }
 
 function copyPhrase() {
 	navigator.clipboard.writeText({{ .Phrase}})
+	document.getElementById("peek").value = {{ .PhrasePeek}};
 }
 </script>
 </head>
@@ -24,6 +27,7 @@ function copyPhrase() {
 	<input type="button" onclick="copyBig()" value="Big"> 
 	<input type="button" onclick="copySmall()" value="Small"> 
 	<input type="button" onclick="copyPhrase()" value="Phrase"> 
+	<input type="text" size="4" id="peek" name="peek" value="peek" readonly>
 	<hr>
 	<form action="dpg">
 	    <input type="submit" value="Start Again" />
