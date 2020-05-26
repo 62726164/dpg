@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DPG - Go Web Form</title>
+<title>dpg</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 {{if and .S .W}}
-	<h2>DPG Results</h2>
+	<h2>DPG</h2>
 	<hr>
-	<pre>Big: {{ .Big}}</pre>
-	<pre>Small: {{ .Small}}</pre>
-	<pre>Phrase: {{ .Phrase}}</pre>
+	<input type="button" onclick="alert({{ .Big}})" value="Big"> 
+	<input type="button" onclick="alert({{ .Small}})" value="Small"> 
+	<input type="button" onclick="alert({{ .Phrase}})" value="Phrase"> 
 	<hr>
-	<p><a href="dpg">Get Another</a></p>
+	<form action="dpg">
+	    <input type="submit" value="Start Again" />
+	</form>
 {{else}}
 	<h2>DPG</h2>
 	<hr>
@@ -20,7 +22,7 @@
 	<label>Sentence</label>
 	<input type="password" name="sentence" required="" title="Enter a sentence"><br>
 	<label>Word</label>
-	<input type="password" name="word" required="" title="Enter a word"><br>
+	<input type="text" name="word" required="" title="Enter a word"><br>
 	<hr>
 	<input type="submit" value= "Submit">
 	<input type="reset"></form>
