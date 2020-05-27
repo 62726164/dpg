@@ -20,17 +20,17 @@ function copyPhrase() {
 }
 </script>
 </head>
-<body>
+<body style="background-color: #6B6767;">
 {{if and .S .W}}
 	<h2>DPG</h2>
 	<hr>
 	<input type="button" onclick="copyBig()" value="Big"> 
 	<input type="button" onclick="copySmall()" value="Small"> 
 	<input type="button" onclick="copyPhrase()" value="Phrase"> 
-	<input type="text" size="4" id="peek" name="peek" value="peek" readonly>
+	<input type="text" style="background-color: #C69A90;" size="4" id="peek" name="peek" value="peek" readonly>
 	<hr>
 	<form action="dpg">
-	    <input type="submit" value="Start Again" />
+	    <input type="submit" value="New Word" />
 	</form>
 {{else}}
 	<h2>DPG</h2>
