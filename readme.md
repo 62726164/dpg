@@ -35,7 +35,7 @@ $ dpg "The sentence" word
 
 ## Why traditional password managers are flawed
 
-Moved to [blog]() post.
+Moved to [blog](https://www.go350.com/posts/the-design-flaws-of-password-managers/).
 
 ## Notes
 
