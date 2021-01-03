@@ -25,6 +25,7 @@ $ dpg "The sentence" word
 ## Usage Recommendations
 
   * Use the same sentence everywhere. Commit it to memory.
+    * Or, use several sentences. One for work passwords, another for personal ones, etc.
   * Use a different word for different sites. Be consistent with case (e.g. google, facebook, twitter, etc.)
   * If you need to change all of your passwords, change the sentence.
   * If you need to change one site password, change the word.
