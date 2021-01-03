@@ -36,3 +36,8 @@ $ dpg "The sentence" word
 ## Why traditional password managers are flawed
 
 Moved to [blog]() post.
+
+## Notes
+
+  * DPG is based on my earlier SHA1_Pass software in 2009.
+  * The C++ implementation is intended for testing and validation only.
