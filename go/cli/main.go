@@ -73,6 +73,7 @@ func readable(password string) string {
 }
 
 func main() {
+	var sentence = flag.String("s", "sentence", "The sentence to use as input to dpg.")
 	var word = flag.String("w", "word", "The word to use as input to dpg.")
 	var help = flag.Bool("help", false, "Show help.")
 
@@ -82,7 +83,7 @@ func main() {
 		return
 	}
 
-	dk := pbkdf2.Key([]byte("The sentence."), []byte(*word), 32768, 64, sha512.New)
+	dk := pbkdf2.Key([]byte(*sentence), []byte(*word), 32768, 64, sha512.New)
 
 	// Uncomment if needed to debug
 	//fmt.Printf("%v \n", dk)
