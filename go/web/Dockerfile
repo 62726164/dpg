@@ -9,5 +9,6 @@ WORKDIR /tmp
 EXPOSE 8080
 
 COPY dpg-web /tmp
+COPY index.html /tmp
 
 CMD ["/tmp/dpg-web"]
