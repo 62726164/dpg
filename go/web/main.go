@@ -4,6 +4,7 @@ import (
 	"crypto/sha512"
 	"golang.org/x/crypto/pbkdf2"
 	"html/template"
+	"log"
 	"net/http"
 )
 
@@ -89,5 +90,5 @@ func handle(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handle)
-	http.ListenAndServe("127.0.0.1:7977", nil)
+	log.Fatal(http.ListenAndServe("127.0.0.1:8080", nil))
 }
