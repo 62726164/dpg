@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"golang.org/x/crypto/pbkdf2"
+	"os"
 )
 
 // Get a big password
@@ -78,7 +79,7 @@ func main() {
 	var help = flag.Bool("help", false, "Show help.")
 
 	flag.Parse()
-	if *help {
+	if *help || len(os.Args) == 1 {
 		flag.PrintDefaults()
 		return
 	}
